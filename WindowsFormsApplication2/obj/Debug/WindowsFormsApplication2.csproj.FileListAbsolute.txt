@@ -10,3 +10,12 @@ c:\users\hao\documents\visual studio 2015\Projects\WindowsFormsApplication2\Wind
 E:\Onedrive\C#project\QSCBOX\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe.config
 E:\Onedrive\C#project\QSCBOX\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.exe
 E:\Onedrive\C#project\QSCBOX\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.pdb
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe.config
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.exe
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.pdb
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.pdb
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.csprojResolveAssemblyReference.cache
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Form1.resources
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Properties.Resources.resources
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.csproj.GenerateResource.Cache

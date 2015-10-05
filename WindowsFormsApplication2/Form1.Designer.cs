@@ -37,11 +37,13 @@ namespace WindowsFormsApplication2
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.button2 = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(312, 48);
+            this.button1.Location = new System.Drawing.Point(282, 37);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(52, 34);
             this.button1.TabIndex = 0;
@@ -51,7 +53,7 @@ namespace WindowsFormsApplication2
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(184, 53);
+            this.textBox1.Location = new System.Drawing.Point(154, 42);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 25);
             this.textBox1.TabIndex = 1;
@@ -59,7 +61,7 @@ namespace WindowsFormsApplication2
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(55, 58);
+            this.label2.Location = new System.Drawing.Point(25, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 15);
             this.label2.TabIndex = 4;
@@ -67,14 +69,14 @@ namespace WindowsFormsApplication2
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(58, 102);
+            this.progressBar1.Location = new System.Drawing.Point(28, 84);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(369, 23);
             this.progressBar1.TabIndex = 5;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(370, 48);
+            this.button2.Location = new System.Drawing.Point(340, 37);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(57, 34);
             this.button2.TabIndex = 6;
@@ -85,7 +87,7 @@ namespace WindowsFormsApplication2
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(321, 161);
+            this.linkLabel1.Location = new System.Drawing.Point(319, 325);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(106, 15);
             this.linkLabel1.TabIndex = 7;
@@ -93,11 +95,30 @@ namespace WindowsFormsApplication2
             this.linkLabel1.Text = "求是潮Box官网";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(28, 142);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(369, 145);
+            this.textBox2.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(25, 124);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 15);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "文件信息：";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 185);
+            this.ClientSize = new System.Drawing.Size(437, 349);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.progressBar1);
@@ -119,6 +140,8 @@ namespace WindowsFormsApplication2
         private ProgressBar progressBar1;
         private Button button2;
         private LinkLabel linkLabel1;
+        private TextBox textBox2;
+        private Label label1;
     }
 }
 
