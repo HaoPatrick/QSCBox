@@ -30,13 +30,14 @@ namespace WindowsFormsApplication2
                 string filename = GetFilePath(name);
                 if (filename == "false")
                 {
+                    DownLoadComplete(2);
                     return "false";
                 }
 
 
                 long totalBytes = qscBox.ContentLength;
-                progressBar1.Maximum = (int)totalBytes / 1024 ;
-                progressBar1.Minimum = 1;
+                progressBar1.Maximum = (int)totalBytes / 1024;
+                progressBar1.Minimum = 0;
 
 
                 if (qscBox.ContentLength != 0)
@@ -52,9 +53,7 @@ namespace WindowsFormsApplication2
                     {
                         if (!dl)
                         {
-                            textBox1.Text = "";
-                            progressBar1.Value = 1;
-                            textBox2.Text = "";
+                            DownLoadComplete(3);
                             return "cancle";
                         }
                         totalDownloadedByte = osize + totalDownloadedByte;
@@ -64,12 +63,7 @@ namespace WindowsFormsApplication2
                         progressBar1.PerformStep();
 
                     }
-                    var result = MessageBox.Show("下载成功，是否打开文件", "下载成功", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        System.Diagnostics.Process.Start("Explorer.exe", filename);
-                    }
-                    button2.Enabled = false;
+                    DownLoadComplete(1, filename);
                     progressBar1.PerformStep();
                     so.Close();
                     st.Close();
@@ -82,10 +76,39 @@ namespace WindowsFormsApplication2
             catch (Exception e)
             {
                 MessageBox.Show("错误原因：" + e.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DownLoadComplete(2);
                 return "下载文件失败！" + e;
             }
         }
 
+        public void DownLoadComplete(int num, string filename)
+        {
+
+            var result = MessageBox.Show("下载成功，是否打开文件", "下载成功", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start("Explorer.exe", filename);
+            }
+            DownLoadComplete(2);
+
+        }
+
+        public void DownLoadComplete(int num)
+        {
+            if (num == 2)
+            {
+                textBox1.Text = "";
+                textBox2.Text = "";
+                progressBar1.Value = 0;
+                button2.Enabled = false;
+            }
+            else if (num == 3)
+            {
+                MessageBox.Show("取消成功");
+                DownLoadComplete(2);
+                
+            }
+        }
         public string GetFileInfo(HttpWebResponse dofile)
         {
             var txt = dofile.Headers.ToString();
