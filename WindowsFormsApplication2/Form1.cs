@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,7 +35,7 @@ namespace WindowsFormsApplication2
 
 
                 long totalBytes = qscBox.ContentLength;
-                progressBar1.Maximum = (int)totalBytes / 1024 +1;
+                progressBar1.Maximum = (int)totalBytes / 1024 ;
                 progressBar1.Minimum = 1;
 
 
@@ -62,7 +64,12 @@ namespace WindowsFormsApplication2
                         progressBar1.PerformStep();
 
                     }
-                    MessageBox.Show("下载成功");
+                    var result = MessageBox.Show("下载成功，是否打开文件", "下载成功", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        System.Diagnostics.Process.Start("Explorer.exe", filename);
+                    }
+                    button2.Enabled = false;
                     progressBar1.PerformStep();
                     so.Close();
                     st.Close();
@@ -74,7 +81,7 @@ namespace WindowsFormsApplication2
             }
             catch (Exception e)
             {
-                MessageBox.Show("错误原因："+e.Message  ,"错误",MessageBoxButtons.OK ,MessageBoxIcon.Error );
+                MessageBox.Show("错误原因：" + e.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return "下载文件失败！" + e;
             }
         }
@@ -83,7 +90,17 @@ namespace WindowsFormsApplication2
         {
             var txt = dofile.Headers.ToString();
             var lastModified = dofile.LastModified;
-            var contentLength = (dofile.ContentLength / 1024).ToString() + "KB";
+            var contentLength = dofile.ContentLength; // 1024).ToString() + "KB";
+            var content = string.Empty;
+            if (contentLength / 1024 > 1024)
+            {
+                content = Math.Round(contentLength / 1024.0 / 1024.0, 2) + "MB";
+            }
+            else
+            {
+                content = (contentLength / 1024) + "KB";
+            }
+
             var server = dofile.Server;
             //获取文件名
             var n1 = txt.IndexOf("name=", StringComparison.Ordinal) + 6;
@@ -91,7 +108,7 @@ namespace WindowsFormsApplication2
             var name = txt.Substring(n1, n2 - n1);
 
             textBox2.Text = "文件名：" + name + "\r\n" +
-                            "文件大小：" + contentLength + "\r\n" +
+                            "文件大小：" + content + "\r\n" +
                             "上传时间：" + lastModified + "\r\n" +
                             "服务器版本：" + server + "\r\n";
             return name;
@@ -109,6 +126,7 @@ namespace WindowsFormsApplication2
 
 
         }
+
 
         public bool dl = true;
         public string GetFilePath(string filename)

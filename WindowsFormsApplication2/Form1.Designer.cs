@@ -61,7 +61,7 @@ namespace WindowsFormsApplication2
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 47);
+            this.label2.Location = new System.Drawing.Point(25, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 15);
             this.label2.TabIndex = 4;
@@ -87,7 +87,7 @@ namespace WindowsFormsApplication2
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(319, 325);
+            this.linkLabel1.Location = new System.Drawing.Point(312, 325);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(106, 15);
             this.linkLabel1.TabIndex = 7;
@@ -116,7 +116,7 @@ namespace WindowsFormsApplication2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 349);
+            this.ClientSize = new System.Drawing.Size(430, 349);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.linkLabel1);
