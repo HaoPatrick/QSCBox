@@ -1,0 +1,9 @@
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\bin\Release\WindowsFormsApplication2.exe.config
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\bin\Release\WindowsFormsApplication2.exe
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\bin\Release\WindowsFormsApplication2.pdb
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\obj\Release\WindowsFormsApplication2.Form1.resources
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\obj\Release\WindowsFormsApplication2.Properties.Resources.resources
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\obj\Release\WindowsFormsApplication2.csproj.GenerateResource.Cache
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\obj\Release\WindowsFormsApplication2.exe
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\obj\Release\WindowsFormsApplication2.pdb
+E:\C#project\QSCBOX\QSCBox\WindowsFormsApplication2\obj\Release\WindowsFormsApplication2.csprojResolveAssemblyReference.cache
