@@ -53,7 +53,7 @@ namespace WindowsFormsApplication2
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(154, 42);
+            this.textBox1.Location = new System.Drawing.Point(142, 42);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 25);
             this.textBox1.TabIndex = 1;
@@ -61,11 +61,11 @@ namespace WindowsFormsApplication2
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 47);
+            this.label2.Location = new System.Drawing.Point(31, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 15);
+            this.label2.Size = new System.Drawing.Size(105, 15);
             this.label2.TabIndex = 4;
-            this.label2.Text = "请输入提取码：";
+            this.label2.Text = "请输入提取码:";
             // 
             // progressBar1
             // 

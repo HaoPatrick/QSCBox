@@ -52,6 +52,7 @@ namespace WindowsFormsApplication2
                         {
                             textBox1.Text = "";
                             progressBar1.Value = 1;
+                            textBox2.Text = "";
                             return "cancle";
                         }
                         totalDownloadedByte = osize + totalDownloadedByte;
@@ -73,7 +74,7 @@ namespace WindowsFormsApplication2
             }
             catch (Exception e)
             {
-                MessageBox.Show("未知错误");
+                MessageBox.Show("错误原因："+e.Message  ,"错误",MessageBoxButtons.OK ,MessageBoxIcon.Error );
                 return "下载文件失败！" + e;
             }
         }
