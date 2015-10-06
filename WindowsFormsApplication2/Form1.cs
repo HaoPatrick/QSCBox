@@ -17,13 +17,14 @@ namespace WindowsFormsApplication2
             button2.Enabled = false;
         }
 
+        public long TotalLenth = 0;
         public async Task<string> DownloadFile(string url)
         {
 
             try
             {
-                HttpWebRequest QSCbox = (HttpWebRequest)WebRequest.Create(url);
-                HttpWebResponse qscBox = (HttpWebResponse)QSCbox.GetResponse();
+                HttpWebRequest qsCbox = (HttpWebRequest)WebRequest.Create(url);
+                HttpWebResponse qscBox = (HttpWebResponse)qsCbox.GetResponse();
                 //获取文件名
                 var name = GetFileInfo(qscBox);
 
@@ -38,32 +39,34 @@ namespace WindowsFormsApplication2
                 long totalBytes = qscBox.ContentLength;
                 progressBar1.Maximum = (int)totalBytes / 1024;
                 progressBar1.Minimum = 0;
-
+                label3.Visible = true;
 
                 if (qscBox.ContentLength != 0)
                 {
+                    timer1.Start();
                     Stream st = qscBox.GetResponseStream();
                     Stream so = new FileStream(filename, FileMode.Create);
-                    long totalDownloadedByte = 0;
-                    byte[] by = new byte[1024];
+               
+                    byte[] by = new byte[4096];
 
                     int osize = await st.ReadAsync(by, 0, @by.Length);
 
                     while (osize > 0)
                     {
-                        if (!dl)
+                        
+                        if (!Dl)
                         {
                             DownLoadComplete(3);
                             return "cancle";
                         }
-                        totalDownloadedByte = osize + totalDownloadedByte;
-
                         await so.WriteAsync(by, 0, osize);
                         osize = await st.ReadAsync(by, 0, @by.Length);
                         progressBar1.PerformStep();
+                        TotalLenth += 4096;
+                        
 
                     }
-                    DownLoadComplete(1, filename);
+                    DownLoadComplete(1, filename,qscBox.ContentLength );
                     progressBar1.PerformStep();
                     so.Close();
                     st.Close();
@@ -81,15 +84,22 @@ namespace WindowsFormsApplication2
             }
         }
 
-        public void DownLoadComplete(int num, string filename)
+        public void GetSpeed(long length)
         {
-
+            label3 .Text ="\r\n"+ "下载速度：" + length*5 /1024.0 + "KB/s";
+        }
+        public void DownLoadComplete(int num, string filename,long contentLength)
+        {
+            timer1.Stop();
+            textBox2.Text += "--------------------" + "\r\n" + "总共用时："+_time/10.0 + "s"+"\r\n"+
+                "平均速度："+Math .Round(  contentLength /1024/(_time/10.0),2) +"KB/s"+"\r\n";
             var result = MessageBox.Show("下载成功，是否打开文件", "下载成功", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 System.Diagnostics.Process.Start("Explorer.exe", filename);
             }
-            DownLoadComplete(2);
+            button2.Enabled = false;
+            // DownLoadComplete(2);
 
         }
 
@@ -101,6 +111,7 @@ namespace WindowsFormsApplication2
                 textBox2.Text = "";
                 progressBar1.Value = 0;
                 button2.Enabled = false;
+
             }
             else if (num == 3)
             {
@@ -141,9 +152,10 @@ namespace WindowsFormsApplication2
         private async void button1_Click(object sender, EventArgs e)
         {
             var ma = textBox1.Text;
+            _time = 0;
             var url = "http://box.zjuqsc.com/-" + ma;
             button2.Enabled = true;
-            dl = true;
+            Dl = true;
 
             await DownloadFile(url);
 
@@ -151,7 +163,7 @@ namespace WindowsFormsApplication2
         }
 
 
-        public bool dl = true;
+        public bool Dl = true;
         public string GetFilePath(string filename)
         {
             FileDialog filepath = new SaveFileDialog();
@@ -168,7 +180,7 @@ namespace WindowsFormsApplication2
             var result = MessageBox.Show("你确定要取消吗？", "注意", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                dl = false;
+                Dl = false;
             }
 
             // MessageBox.Show("it works");
@@ -177,6 +189,17 @@ namespace WindowsFormsApplication2
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("http://box.zjuqsc.com/");
+        }
+
+        private long _time = 0;
+        public long LastLength = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            _time++;
+            if(_time %2==0)
+                if(TotalLenth -LastLength !=0)
+                     GetSpeed(TotalLenth - LastLength);
+            LastLength = TotalLenth;
         }
     }
 }

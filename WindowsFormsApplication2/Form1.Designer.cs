@@ -31,6 +31,7 @@ namespace WindowsFormsApplication2
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,6 +40,8 @@ namespace WindowsFormsApplication2
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -100,7 +103,7 @@ namespace WindowsFormsApplication2
             this.textBox2.Location = new System.Drawing.Point(28, 142);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(369, 145);
+            this.textBox2.Size = new System.Drawing.Size(369, 121);
             this.textBox2.TabIndex = 8;
             // 
             // label1
@@ -112,11 +115,26 @@ namespace WindowsFormsApplication2
             this.label1.TabIndex = 9;
             this.label1.Text = "文件信息：";
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(25, 278);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 15);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "下载速度：";
+            this.label3.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(430, 349);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.linkLabel1);
@@ -142,6 +160,8 @@ namespace WindowsFormsApplication2
         private LinkLabel linkLabel1;
         private TextBox textBox2;
         private Label label1;
+        private Timer timer1;
+        private Label label3;
     }
 }
 
