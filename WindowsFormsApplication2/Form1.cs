@@ -195,12 +195,18 @@ namespace WindowsFormsApplication2
 
         private long _time = 0;
         public long LastLength = 0;
+        private long len1 = 0;
+        private long len2 = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
             _time++;
-            if (_time % 2 == 0)
-                if(TotalLenth -LastLength !=0)
-                    GetSpeed(TotalLenth - LastLength);
+
+            if (_time%2 == 0)
+                len1 = TotalLenth - LastLength;
+                if (len1  !=0)
+                    GetSpeed((len1+len2)/2 );
+            else 
+                len2 =TotalLenth -LastLength;
             LastLength = TotalLenth;
         }
     }
