@@ -37,23 +37,25 @@ namespace WindowsFormsApplication2
 
 
                 long totalBytes = qscBox.ContentLength;
-                progressBar1.Maximum = (int)totalBytes / 1024;
+
+                progressBar1.Maximum = (int) totalBytes / 6147;
                 progressBar1.Minimum = 0;
+                progressBar1.Step = 1;
                 label3.Visible = true;
 
-                if (qscBox.ContentLength != 0)
+                if (totalBytes != 0)
                 {
                     timer1.Start();
                     Stream st = qscBox.GetResponseStream();
                     Stream so = new FileStream(filename, FileMode.Create);
-               
-                    byte[] by = new byte[4096];
+
+                    byte[] by = new byte[8196];
 
                     int osize = await st.ReadAsync(by, 0, @by.Length);
-
+                    var n = 0;
                     while (osize > 0)
                     {
-                        
+
                         if (!Dl)
                         {
                             DownLoadComplete(3);
@@ -62,12 +64,13 @@ namespace WindowsFormsApplication2
                         await so.WriteAsync(by, 0, osize);
                         osize = await st.ReadAsync(by, 0, @by.Length);
                         progressBar1.PerformStep();
-                        TotalLenth += 4096;
-                        
-
+                        TotalLenth += 8196;
+                       // progressBar1.Value = (int)(TotalLenth / totalBytes * 100);
+                     //   progressBar1.Increment((int) (8196/totalBytes));
+                        n++;
                     }
-                    DownLoadComplete(1, filename,qscBox.ContentLength );
-                    progressBar1.PerformStep();
+                    DownLoadComplete(1, filename, totalBytes);
+
                     so.Close();
                     st.Close();
 
@@ -86,13 +89,13 @@ namespace WindowsFormsApplication2
 
         public void GetSpeed(long length)
         {
-            label3 .Text ="\r\n"+ "下载速度：" + length*5 /1024.0 + "KB/s";
+            label3.Text = "\r\n" + "下载速度：" + length * 5 / 1024.0 + "KB/s";
         }
-        public void DownLoadComplete(int num, string filename,long contentLength)
+        public void DownLoadComplete(int num, string filename, long contentLength)
         {
             timer1.Stop();
-            textBox2.Text += "--------------------" + "\r\n" + "总共用时："+_time/10.0 + "s"+"\r\n"+
-                "平均速度："+Math .Round(  contentLength /1024/(_time/10.0),2) +"KB/s"+"\r\n";
+            textBox2.Text += "--------------------" + "\r\n" + "总共用时：" + _time / 10.0 + "s" + "\r\n" +
+                "平均速度：" + Math.Round(contentLength / 1024 / (_time / 10.0), 2) + "KB/s" + "\r\n";
             var result = MessageBox.Show("下载成功，是否打开文件", "下载成功", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
@@ -117,7 +120,7 @@ namespace WindowsFormsApplication2
             {
                 MessageBox.Show("取消成功");
                 DownLoadComplete(2);
-                
+
             }
         }
         public string GetFileInfo(HttpWebResponse dofile)
@@ -151,12 +154,11 @@ namespace WindowsFormsApplication2
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            var ma = textBox1.Text;
+            var ma = textBox1.Text.Trim();
             _time = 0;
             var url = "http://box.zjuqsc.com/-" + ma;
             button2.Enabled = true;
             Dl = true;
-
             await DownloadFile(url);
 
 
@@ -196,9 +198,9 @@ namespace WindowsFormsApplication2
         private void timer1_Tick(object sender, EventArgs e)
         {
             _time++;
-            if(_time %2==0)
+            if (_time % 2 == 0)
                 if(TotalLenth -LastLength !=0)
-                     GetSpeed(TotalLenth - LastLength);
+                    GetSpeed(TotalLenth - LastLength);
             LastLength = TotalLenth;
         }
     }

@@ -56,7 +56,7 @@ namespace WindowsFormsApplication2
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(142, 42);
+            this.textBox1.Location = new System.Drawing.Point(142, 43);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 25);
             this.textBox1.TabIndex = 1;
@@ -90,7 +90,7 @@ namespace WindowsFormsApplication2
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(312, 325);
+            this.linkLabel1.Location = new System.Drawing.Point(291, 338);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(106, 15);
             this.linkLabel1.TabIndex = 7;
@@ -103,7 +103,7 @@ namespace WindowsFormsApplication2
             this.textBox2.Location = new System.Drawing.Point(28, 142);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(369, 121);
+            this.textBox2.Size = new System.Drawing.Size(369, 138);
             this.textBox2.TabIndex = 8;
             // 
             // label1
@@ -122,7 +122,7 @@ namespace WindowsFormsApplication2
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 278);
+            this.label3.Location = new System.Drawing.Point(25, 301);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 15);
             this.label3.TabIndex = 10;
@@ -133,7 +133,7 @@ namespace WindowsFormsApplication2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 349);
+            this.ClientSize = new System.Drawing.Size(425, 367);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
