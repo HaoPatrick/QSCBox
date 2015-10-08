@@ -91,6 +91,8 @@ namespace WindowsFormsApplication2
         {
             label3.Text = "\r\n" + "下载速度：" + length * 5 / 1024.0 + "KB/s";
         }
+
+
         public void DownLoadComplete(int num, string filename, long contentLength)
         {
             timer1.Stop();
@@ -123,6 +125,8 @@ namespace WindowsFormsApplication2
 
             }
         }
+
+
         public string GetFileInfo(HttpWebResponse dofile)
         {
             var txt = dofile.Headers.ToString();
@@ -161,11 +165,16 @@ namespace WindowsFormsApplication2
             Dl = true;
             await DownloadFile(url);
 
-
         }
 
-
         public bool Dl = true;
+
+
+        /// <summary>
+        /// 得到用户储存的地址，如果正确的话
+        /// </summary>
+        /// <param name="filename">要下载的文件名</param>
+        /// <returns>返回最终的文件地址</returns>
         public string GetFilePath(string filename)
         {
             FileDialog filepath = new SaveFileDialog();
@@ -193,14 +202,22 @@ namespace WindowsFormsApplication2
             System.Diagnostics.Process.Start("http://box.zjuqsc.com/");
         }
 
+
+    
         private long _time = 0;
         public long LastLength = 0;
         private long len1 = 0;
         private long len2 = 0;
+
+        /// <summary>
+        /// 总时钟，同时计算下载速度
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
             _time++;
-
+            //奇偶分开，目的是降低刷新频率，同时提高数据的稳定性。
             if (_time%2 == 0)
                 len1 = TotalLenth - LastLength;
                 if (len1  !=0)

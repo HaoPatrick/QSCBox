@@ -90,7 +90,7 @@ namespace WindowsFormsApplication2
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(291, 338);
+            this.linkLabel1.Location = new System.Drawing.Point(291, 343);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(106, 15);
             this.linkLabel1.TabIndex = 7;
